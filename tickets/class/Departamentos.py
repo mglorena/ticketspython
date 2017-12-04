@@ -28,7 +28,7 @@ class Departamentos:
         sql = SqlProvider()
         rows = sql.Execute(query)
         return rows[0]
-#    
+    
     def GetById(self,depid):
         query = "select * from dptos_getbyid() where DepId =" + str(depid) +";" 
         sql = SqlProvider()

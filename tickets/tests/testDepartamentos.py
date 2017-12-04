@@ -17,9 +17,15 @@ class  TestDepartamentosTestCase(unittest.TestCase):
          self.assertTrue(hasattr(dep, 'created'))
          self.assertTrue(hasattr(dep, 'updated'))
          self.assertTrue(hasattr(dep, 'firma'))
+         self.assertTrue(hasattr(dep, 'autorespemail'))
          dep.nombre = "Taller de Electricidad"
          dep.nombreresponsable = "Quinteros"
          dep.depid = 1
+         dep.autorespemail ='quinteros@unsa.edu.ar'
+         dep.ispublico = 1
+         dep.firma = 'DGOyS - Taller'
+         dep.created = date.today()
+         dep.updated = date.today()
          self.assertEqual(dep.nombre, "Taller de Electricidad")
          self.assertEqual(dep.nombreresponsable, "Quinteros")
          self.assertEqual(dep.depid, 1)
@@ -28,6 +34,7 @@ class  TestDepartamentosTestCase(unittest.TestCase):
          dep = Departamentos()
          dep.nombre = "Estudios y Proyectos"
          dep.nombreresponsable = "Quinteros"
+         dep.autorespemail ='quinteros@unsa.edu.ar'
          dep.firma = 'DGOyS'
          dep.ispublico = 1
          dep.created = date.today()
@@ -44,8 +51,16 @@ class  TestDepartamentosTestCase(unittest.TestCase):
          dep = Departamentos()
          d = dep.GetById(depId)
          self.assertIsNotNone(d.depid)
+         self.assertIsNotNone(dep.nombre)
+         self.assertIsNotNone(dep.nombreresponsable)
+         self.assertIsNotNone(dep.created)
+         self.assertIsNotNone(dep.autorespemail)
+         self.assertIsNotNone(dep.firma)
+         self.assertIsNotNone(dep.updated)
+         self.assertIsNotNone(dep.ispublico)
          self.assertEqual(dep.nombre, "Taller de Red")
          self.assertEqual(dep.nombreresponsable, "Daniel Acevedo")
+         
          
     def test_UpdateDepartamento(self):
         depId = 10
@@ -55,6 +70,7 @@ class  TestDepartamentosTestCase(unittest.TestCase):
         d.Update()
         self.assertEqual(d.nombre, 'Taller de Informatica')
         self.assertEqual(d.autorespemail,'sarapuraa@unsa.edu.ar')
+        self.assertEqual(d.nombreresponsable,'Lorena Garcia')
         
 def main():
     unittest.main()
