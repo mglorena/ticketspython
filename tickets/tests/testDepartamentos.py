@@ -3,7 +3,11 @@
 # and open the template in the editor.
 
 import unittest
+import sys
+import os
+sys.path.append(os.path.join('..', 'class'))
 from Departamentos import Departamentos
+
 from datetime import date
 
 class  TestDepartamentosTestCase(unittest.TestCase):
@@ -71,6 +75,12 @@ class  TestDepartamentosTestCase(unittest.TestCase):
         self.assertEqual(d.nombre, 'Taller de Informatica')
         self.assertEqual(d.autorespemail,'sarapuraa@unsa.edu.ar')
         self.assertEqual(d.nombreresponsable,'Lorena Garcia')
+        
+    def test_GetAllDepartamentos(self):
+        dep = Departamentos()
+        listDep = dep.GetAll()
+        self.assertIsNotNone(len(listDep))
+        
         
 def main():
     unittest.main()

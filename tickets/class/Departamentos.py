@@ -35,6 +35,7 @@ class Departamentos:
         row = sql.Execute(query)
         self.Copy(row[0])   
         return self
+    
     def Update(self):
         ip = 'false'
         if(str(self.ispublico)=='1'): isp = 'true'
@@ -43,3 +44,10 @@ class Departamentos:
         row = sql.Execute(query)
         self.Copy(row[0])   
         return self
+    
+    def GetAll(self):
+        query = "select * from dptos_getbyid();" 
+        sql = SqlProvider()
+        rows = sql.Execute(query)
+        return rows
+    
